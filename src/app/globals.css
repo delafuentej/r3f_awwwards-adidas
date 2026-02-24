@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --background: #1d1d1d;
+}
+
+body {
+  background: var(--background);
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .btn {
+    @apply px-5 py-2 rounded-3xl my-5 hover:bg-transparent border border-transparent hover:border;
+  }
+}
+
+@utility hover-animation {
+  @apply cursor-pointer opacity-75 hover:opacity-100 transition-opacity duration-100;
+}
