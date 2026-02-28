@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import MainStudioModel from "./MainStudioModel";
+
 import Rig from "./Rig";
 import { View } from "@react-three/drei";
 import { useStore } from "../store/useStore";

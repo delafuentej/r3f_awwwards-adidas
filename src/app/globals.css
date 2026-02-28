@@ -39,6 +39,9 @@ body {
   .right-arrow {
     @apply absolute z-100 top-10/12 right-1/12 bg-white mask-[url(/icons/right.svg)] size-12 mask-no-repeat border hover-animation;
   }
+  .scene {
+    @apply min-h-screen;
+  }
 }
 
 @utility hover-animation {
