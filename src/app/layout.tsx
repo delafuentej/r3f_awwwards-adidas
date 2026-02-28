@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
+import ViewCanvas from "../components/ViewCanvas";
+import { ResponsiveProvider } from "../providers/ResponsiveProvider";
+
 import "./globals.css";
 
 const mulish = Mulish({
@@ -19,7 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${mulish.className} antialiased`}>{children}</body>
+      <body className={`${mulish.className} antialiased`}>
+        <ResponsiveProvider>
+          <ViewCanvas />
+          {children}
+        </ResponsiveProvider>
+      </body>
     </html>
   );
 }
