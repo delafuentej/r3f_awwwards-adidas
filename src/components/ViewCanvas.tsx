@@ -22,10 +22,11 @@ const ViewCanvas = () => {
       camera={{ position: [0, 2, 5], fov: 25 }}
       eventSource={eventSource ?? undefined}
       eventPrefix="client"
+      gl={{ stencil: true }}
     >
       {/* <OrbitControls /> */}
       <View.Port />
-      {/* <Rig /> */}
+      <Rig />
       {/* <MainStudioModel /> */}
     </Canvas>
   );

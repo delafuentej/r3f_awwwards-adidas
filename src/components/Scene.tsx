@@ -1,4 +1,6 @@
 import { View } from "@react-three/drei";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
 import FirstWhiteModel from "./sections/FirstWhiteModel";
 import FirstGrayModel from "./sections/FirstGrayModel";
 import FirstSportModel from "./sections/FirstSportModel";
@@ -8,6 +10,8 @@ import ThirdModel from "./sections/ThirdModel";
 type Props = {
   shirtType: ShirtType;
 };
+
+gsap.registerPlugin({ ScrollTrigger });
 
 const Scene = ({ shirtType }: Props) => {
   return (
