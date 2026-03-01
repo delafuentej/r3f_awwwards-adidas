@@ -1,9 +1,13 @@
 import * as THREE from "three";
+import { useMask } from "@react-three/drei";
 
-const createMaterials = (textures: Record<string, THREE.Texture>) => {
+const createMaterials = (
+  textures: Record<string, THREE.Texture>,
+  stencil?: ReturnType<typeof useMask>,
+) => {
   const mats: Record<string, THREE.MeshBasicMaterial> = {};
   for (const [key, tex] of Object.entries(textures)) {
-    mats[key] = new THREE.MeshBasicMaterial({ map: tex });
+    mats[key] = new THREE.MeshBasicMaterial({ map: tex, ...(stencil ?? {}) });
   }
   return mats;
 };

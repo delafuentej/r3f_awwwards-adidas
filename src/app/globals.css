@@ -43,6 +43,10 @@ body {
   .scene {
     @apply min-h-screen;
   }
+
+  .second-section {
+    @apply absolute inset-0 -z-10 h-screen;
+  }
 }
 
 @utility hover-animation {
