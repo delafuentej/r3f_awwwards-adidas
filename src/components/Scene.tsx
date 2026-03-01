@@ -4,6 +4,7 @@ import FirstWhiteModel from "./sections/FirstWhiteModel";
 import FirstGrayModel from "./sections/FirstGrayModel";
 import FirstSportModel from "./sections/FirstSportModel";
 import type { ShirtType } from "../lib/textures";
+import { SecondModel } from "./sections/SecondModel";
 
 type Props = {
   shirtType: ShirtType;
@@ -19,9 +20,11 @@ const Scene = ({ shirtType }: Props) => {
           {shirtType === "sport" && <FirstSportModel />}
         </View>
       </section>
-      {/* <section id="second-section" className="h-screen"> */}
-      {/* <View className="w-dvw h-dvh">{}</View> */}
-      {/* </section> */}
+      <section id="second-section" className="h-screen">
+        <View className="w-dvw h-dvh">
+          <SecondModel shirtType={shirtType} />
+        </View>
+      </section>
       {/* <section id="third-section" className="h-screen"> */}
       {/* <View className="w-dvw h-dvh">{}</View> */}
       {/* </section> */}
