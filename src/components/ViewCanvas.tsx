@@ -23,7 +23,7 @@ const ViewCanvas = () => {
       eventSource={eventSource ?? undefined}
       eventPrefix="client"
     >
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <View.Port />
       {/* <Rig /> */}
       {/* <MainStudioModel /> */}

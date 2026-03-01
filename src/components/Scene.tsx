@@ -1,11 +1,10 @@
-"use client";
 import { View } from "@react-three/drei";
 import FirstWhiteModel from "./sections/FirstWhiteModel";
 import FirstGrayModel from "./sections/FirstGrayModel";
 import FirstSportModel from "./sections/FirstSportModel";
 import type { ShirtType } from "../lib/textures";
 import { SecondModel } from "./sections/SecondModel";
-
+import ThirdModel from "./sections/ThirdModel";
 type Props = {
   shirtType: ShirtType;
 };
@@ -25,9 +24,11 @@ const Scene = ({ shirtType }: Props) => {
           <SecondModel shirtType={shirtType} />
         </View>
       </section>
-      {/* <section id="third-section" className="h-screen"> */}
-      {/* <View className="w-dvw h-dvh">{}</View> */}
-      {/* </section> */}
+      <section id="third-section" className="h-screen">
+        <View className="w-dvw h-dvh">
+          <ThirdModel shirtType={shirtType} />
+        </View>
+      </section>
     </main>
   );
 };

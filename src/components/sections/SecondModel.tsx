@@ -12,7 +12,7 @@ import { createMaterials } from "@/src/lib/material";
 import type { ShirtType } from "@/src/lib/textures";
 import type { TextureKey } from "@/src/lib/textures";
 import { shirtTextColors } from "@/src/lib/colors";
-import { get } from "http";
+import { useResponsive } from "@/src/store/useResponsive";
 
 type GLTFResult = GLTF & { nodes: { [name: string]: THREE.Mesh } };
 
@@ -20,6 +20,8 @@ export function SecondModel({ shirtType }: { shirtType: ShirtType }) {
   const { nodes } = useGLTF(
     "/models/ShirtScrolling.glb",
   ) as unknown as GLTFResult;
+
+  const { isMobile } = useResponsive();
 
   console.log("nodes:", nodes);
 
@@ -83,7 +85,7 @@ export function SecondModel({ shirtType }: { shirtType: ShirtType }) {
   }, []);
 
   return (
-    <group dispose={null}>
+    <group dispose={null} scale={isMobile ? 1.4 : 2.2}>
       <mesh geometry={nodes.Shirt.geometry} material={materials.shirt} />
       <mesh geometry={nodes.Sphere_ENV.geometry} material={materials.sphere} />
       <group>
