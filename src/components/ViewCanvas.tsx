@@ -6,7 +6,7 @@ import { View, OrbitControls } from "@react-three/drei";
 import { useStore } from "../store/useStore";
 import Rig from "./Rig";
 
-// video 6 : 9:00 https://www.youtube.com/watch?v=ec2CTmkjc0M
+// video 8-1 : 19:15https://www.youtube.com/watch?v=WRi6rMj1KI8
 
 const ViewCanvas = () => {
   const eventSource = useStore((state) => state.eventSource);

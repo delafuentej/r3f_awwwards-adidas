@@ -8,6 +8,7 @@ import { useGLTF, useMask } from "@react-three/drei";
 import { useShirtSectionTextures } from "@/src/lib/useTextures";
 import { createMaterials } from "@/src/lib/material";
 import type { TextureKey } from "@/src/lib/textures";
+import useAnimation from "@/src/lib/useAnimation";
 import Masking from "./Masking";
 
 type GLTFResult = GLTF & { nodes: { [name: string]: THREE.Mesh } };
@@ -17,6 +18,7 @@ function FirstSportModel() {
   ) as unknown as GLTFResult;
 
   const stencil = useMask(1);
+  const shirtRef = useRef<THREE.Mesh>(null);
   const groupRef = useRef<THREE.Group>(null);
   const maskRef = useRef<THREE.Mesh>(null);
 
@@ -26,12 +28,15 @@ function FirstSportModel() {
     THREE.MeshBasicMaterial
   >;
 
+  useAnimation(groupRef, shirtRef, maskRef);
+
   console.log("materials sport first", materials);
   return (
     <group>
       <Masking ref={maskRef} />
       <group ref={groupRef} dispose={null}>
         <mesh
+          ref={shirtRef}
           geometry={nodes.Shirt_Sport.geometry}
           material={materials.shirt}
           position={[0, 0.7, 0]}

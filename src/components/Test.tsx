@@ -6,7 +6,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 const Test = () => {
   return (
     <Canvas>
-      <Environment preset="sunset" />
+      {/* <Environment preset="sunset" /> */}
       <OrbitControls />
 
       <mesh scale={2} position={[0, 0, 0]}>

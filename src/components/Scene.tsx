@@ -11,7 +11,7 @@ type Props = {
   shirtType: ShirtType;
 };
 
-gsap.registerPlugin({ ScrollTrigger });
+gsap.registerPlugin(ScrollTrigger);
 
 const Scene = ({ shirtType }: Props) => {
   return (
