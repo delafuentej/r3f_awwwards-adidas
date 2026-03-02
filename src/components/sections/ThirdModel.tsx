@@ -44,6 +44,24 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
     window.open("https://www.adidas.es/", "_blank");
   }, []);
 
+  useGSAP(() => {
+    if (!groupRef.current || !maskRef.current) return;
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#third-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+        pin: true,
+      },
+    });
+    tl.from(maskRef.current.position, { y: -3 }).from(
+      maskRef.current.rotation,
+      { z: -0.3 },
+      0,
+    );
+  }, []);
+
   return (
     <group>
       <Masking ref={maskRef} />

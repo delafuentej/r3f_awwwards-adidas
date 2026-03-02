@@ -47,6 +47,9 @@ body {
   .second-section {
     @apply absolute inset-0 -z-10 h-screen;
   }
+  .third-section {
+    @apply absolute left-0 top-[500vh] h-screen;
+  }
 }
 
 @utility hover-animation {
