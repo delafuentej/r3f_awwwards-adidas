@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import ViewCanvas from "../components/ViewCanvas";
 import { ResponsiveProvider } from "../providers/ResponsiveProvider";
+import { Header, Footer } from "../components/ui";
 
 import "./globals.css";
 
@@ -25,7 +26,9 @@ export default function RootLayout({
       <body className={`${mulish.className} antialiased`}>
         <ResponsiveProvider>
           <ViewCanvas />
+          <Header />
           {children}
+          <Footer />
         </ResponsiveProvider>
       </body>
     </html>

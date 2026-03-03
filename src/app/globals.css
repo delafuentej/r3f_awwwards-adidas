@@ -31,6 +31,16 @@ body {
     @apply px-5 py-2 rounded-3xl my-5 hover:bg-transparent border border-transparent hover:border;
   }
 
+  .header {
+    @apply fixed z-10 flex items-start justify-between w-full md:pt-10 pt-3 md:px-20 px-5;
+  }
+  .logo-fl {
+    @apply mask-[url(/icons/footLocker.svg)] md:w-44 w-40 h-16 mask-no-repeat hover-animation;
+  }
+  .music-stream-line {
+    @apply flex justify-center items-center size-7 hover-animation;
+  }
+
   .home-title {
     @apply absolute z-10 top-11/12 place-self-center text-white/80 md:text-xs text-[10px] font-medium tracking-wider;
   }
@@ -49,6 +59,21 @@ body {
   }
   .third-section {
     @apply absolute left-0 top-[500vh] h-screen;
+  }
+  .scroll-indicator {
+    @apply fixed flex flex-col items-center z-10 top-4/5 place-self-center gap-5 transition-opacity duration-500;
+  }
+  .line-scroll-indicator {
+    @apply w-px h-16 place-self-center;
+  }
+  .circle-scroll-indicator {
+    @apply absolute size-4 border rounded-full left-[12] top-0;
+  }
+  .text-scroll-indicator {
+    @apply uppercase md:text-sm text-xs tracking-wider transform;
+  }
+  .footer {
+    @apply fixed w-full bottom-2 font-bold flex items-center justify-center gap-8 md:px-20 px-5 md:text-xs text-[10px] md:tracking-widest text-nowrap;
   }
 }
 
