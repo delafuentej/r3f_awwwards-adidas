@@ -72,6 +72,23 @@ body {
   .text-scroll-indicator {
     @apply uppercase md:text-sm text-xs tracking-wider transform;
   }
+  .loading-skeleton {
+    @apply flex items-center justify-center bg-black w-screen h-screen;
+  }
+  .bars {
+    @apply flex items-center justify-center gap-2;
+  }
+  .bar {
+    @apply w-2 h-32 transition-discrete duration-700;
+  }
+
+  .text-loading {
+    @apply mt-2 text-sm text-white/50 text-center;
+  }
+  .loading-bar {
+    @apply h-2 bg-white/50 transition-all duration-200 rounded-full;
+  }
+
   .footer {
     @apply fixed w-full bottom-2 font-bold flex items-center justify-center gap-8 md:px-20 px-5 md:text-xs text-[10px] md:tracking-widest text-nowrap;
   }

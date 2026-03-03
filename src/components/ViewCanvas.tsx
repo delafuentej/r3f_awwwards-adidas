@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { View, OrbitControls } from "@react-three/drei";
 import { useStore } from "../store/useStore";
 import Rig from "./Rig";
+import { LoadingSkeleton } from "./ui";
+import patchThreeLoadingManager from "../lib/patchThreeLoadingManager";
 
 // video 8-1 : 19:15https://www.youtube.com/watch?v=WRi6rMj1KI8
+
+patchThreeLoadingManager();
 
 const ViewCanvas = () => {
   const eventSource = useStore((state) => state.eventSource);
@@ -25,9 +29,10 @@ const ViewCanvas = () => {
       gl={{ stencil: true }}
     >
       {/* <OrbitControls /> */}
-      <View.Port />
-      <Rig />
-      {/* <MainStudioModel /> */}
+      <Suspense fallback={<LoadingSkeleton />}>
+        <View.Port />
+        <Rig />
+      </Suspense>
     </Canvas>
   );
 };

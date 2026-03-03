@@ -14,7 +14,7 @@ const ScrollIndicator = ({ shirtType }: { shirtType: ShirtType }) => {
   const circleRef = useRef<HTMLDivElement>(null);
 
   const scrolling = useStore((state) => state.scrolling);
-  console.log("scrolling", scrolling);
+
   const setScrolling = useStore((state) => state.setScrolling);
 
   //scrolling

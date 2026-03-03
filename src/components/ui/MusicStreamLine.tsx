@@ -10,13 +10,9 @@ const MusicStreamLine = ({ color }: { color: string }) => {
   const playMusic = useStore((state) => state.playMusic);
   const toggleMusic = useStore((state) => state.toggleMusic);
 
-  console.log("playMusic", playMusic);
-
   useGSAP(() => {
     if (!divRef.current) return;
     const bars = Array.from(divRef.current.children);
-
-    console.log("bars", bars);
 
     gsap.killTweensOf(bars);
 
