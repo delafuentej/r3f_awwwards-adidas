@@ -66,6 +66,4 @@ function FirstGrayModel() {
   );
 }
 
-useGLTF.preload("/models/gray/GrayStudio.glb");
-
 export default FirstGrayModel;

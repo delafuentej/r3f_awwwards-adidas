@@ -188,5 +188,3 @@ export function SecondModel({ shirtType }: { shirtType: ShirtType }) {
     </group>
   );
 }
-
-useGLTF.preload("/models/ShirtScrolling.glb");

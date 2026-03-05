@@ -2,11 +2,12 @@
 
 import { useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { View, OrbitControls } from "@react-three/drei";
+import { View } from "@react-three/drei";
 import { useStore } from "../store/useStore";
 import Rig from "./Rig";
 import { LoadingSkeleton } from "./ui";
 import patchThreeLoadingManager from "../lib/patchThreeLoadingManager";
+import AssetsPreload from "./ui/AssetsPreload";
 
 // video 8-1 : 19:15https://www.youtube.com/watch?v=WRi6rMj1KI8
 
@@ -29,6 +30,7 @@ const ViewCanvas = () => {
       gl={{ stencil: true }}
     >
       {/* <OrbitControls /> */}
+      <AssetsPreload />
       <Suspense fallback={<LoadingSkeleton />}>
         <View.Port />
         <Rig />

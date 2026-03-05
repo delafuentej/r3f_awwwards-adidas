@@ -54,6 +54,4 @@ function FirstSportModel() {
   );
 }
 
-useGLTF.preload("/models/sport/SportStudio.glb");
-
 export default FirstSportModel;

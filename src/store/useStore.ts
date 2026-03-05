@@ -23,7 +23,7 @@ interface StudioState {
   setScrolling: (value: boolean) => void;
 }
 
-export const useStore = create((set, get) => ({
+export const useStore = create<StudioState>((set, get) => ({
   activeStudioMaterial: "defaultStudio" as StudioMaterial,
   eventSource: null as unknown as HTMLElement,
   currentIndex: 1,
