@@ -1,6 +1,7 @@
 import { create } from "zustand";
+import * as THREE from "three";
 
-type StudioMaterial =
+export type StudioMaterial =
   | "defaultStudio"
   | "whiteStudio"
   | "redStudio"
@@ -10,6 +11,7 @@ interface StudioState {
   activeStudioMaterial: StudioMaterial;
   eventSource: HTMLElement | null;
   currentIndex: number;
+  maxIndex: number;
   playMusic: boolean;
   scrolling: boolean;
   setStudioMaterial: (material: StudioMaterial) => void;

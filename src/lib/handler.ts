@@ -1,23 +1,23 @@
-import * as THREE from "three";
+import type { MutableRefObject } from "react";
 
 const enterHandler = (
   onEnter?: () => void,
   idx?: number,
-  refs?: MutableRefObject<(THREE.Mesh | null)[]>,
+  refs?: MutableRefObject<(GSAPTimeline | null)[]>,
 ) => {
   document.body.style.cursor = "pointer";
   onEnter?.();
-  refs.current[idx].play();
+  refs?.current[idx ?? -1]?.play(); // ✅ Safe call
 };
 
 const leaveHandler = (
   onLeave?: () => void,
   idx?: number,
-  refs?: MutableRefObject<(THREE.Mesh | null)[]>,
+  refs?: MutableRefObject<(GSAPTimeline | null)[]>,
 ) => {
   document.body.style.cursor = "auto";
   onLeave?.();
-  refs.current[idx].reverse();
+  refs?.current[idx ?? -1]?.reverse(); // ✅ Safe call
 };
 
 export { enterHandler, leaveHandler };

@@ -58,7 +58,7 @@ const MusicStreamLine = ({ color }: { color: string }) => {
   }, [playMusic]);
 
   return (
-    <div onClick={() => toggleMusic()} className="music-stream-line">
+    <div onClick={() => toggleMusic(!playMusic)} className="music-stream-line">
       <div ref={divRef} className="flex gap-1">
         <div className={clsx("w-0.5 h-1", color)} />
         <div className={clsx("w-0.5 h-1", color)} />

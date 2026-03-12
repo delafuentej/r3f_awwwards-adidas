@@ -8,6 +8,7 @@ import { useGLTF, useMask } from "@react-three/drei";
 import { useShirtSectionTextures } from "@/src/lib/useTextures";
 import { createMaterials } from "@/src/lib/material";
 import type { TextureKey } from "@/src/lib/textures";
+import type { GLTF } from "three-stdlib";
 import Masking from "./Masking";
 import useAnimation from "@/src/lib/useAnimation";
 
@@ -23,6 +24,7 @@ function FirstWhiteModel() {
   const maskRef = useRef<THREE.Mesh>(null);
 
   const textures = useShirtSectionTextures("white", "first");
+  if (!textures) return;
   const materials = createMaterials(textures, stencil) as Record<
     TextureKey<"white", "first">,
     THREE.MeshBasicMaterial

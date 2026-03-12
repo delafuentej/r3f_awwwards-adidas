@@ -1,10 +1,14 @@
 // providers/ResponsiveProvider.tsx
 "use client";
-import { useEffect } from "react";
+import { useEffect, ReactNode } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useResponsive } from "../store/useResponsive";
 
-export const ResponsiveProvider = ({ children }) => {
+interface ResponsiveProviderProps {
+  children: ReactNode;
+}
+
+export const ResponsiveProvider = ({ children }: ResponsiveProviderProps) => {
   const setDevice = useResponsive((state) => state.setDevice);
 
   const isMobile = useMediaQuery({ maxWidth: 767 });

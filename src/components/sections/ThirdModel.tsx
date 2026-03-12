@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useShirtSectionTextures } from "@/src/lib/useTextures";
 import type { ShirtType, TextureKey } from "@/src/lib/textures";
+import type { GLTF } from "three-stdlib";
 import { shirtTextColors } from "@/src/lib/colors";
 import {
   useShirtEnvironmentCube,

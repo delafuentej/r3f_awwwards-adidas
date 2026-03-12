@@ -17,6 +17,7 @@ import { useMainStudioTextures } from "../lib/useTextures";
 import { createMaterials } from "../lib/material";
 import { useStore } from "../store/useStore";
 import { useResponsive } from "../store/useResponsive";
+import type { StudioMaterial } from "../store/useStore";
 
 type GLTFResult = GLTF & {
   nodes: { [name: string]: THREE.Mesh };
@@ -28,8 +29,8 @@ interface ShirtConfig {
   geometry: THREE.BufferGeometry;
   position: [number, number, number];
   rotation: [number, number, number];
-  material: Record<string, THREE.Material>;
-  hoverMat: THREE.Material;
+  material: THREE.Material;
+  hoverMat: StudioMaterial;
 }
 
 // Definido fuera del componente — no se recrea en cada render
@@ -60,8 +61,15 @@ function MainStudioModel() {
     grayShirt,
   } = materials;
 
+  const studioMaterials = {
+    defaultStudio,
+    whiteStudio,
+    redStudio,
+    grayStudio,
+  };
+
   // Memorizar shirts config — evita recrear el array en cada render
-  const shirts = useMemo(
+  const shirts = useMemo<ShirtConfig[]>(
     () => [
       {
         slug: "white",
@@ -69,7 +77,7 @@ function MainStudioModel() {
         position: SHIRT_POSITIONS[0],
         rotation: [0, Math.PI, 0],
         material: whiteShirt,
-        hoverMat: whiteStudio,
+        hoverMat: "whiteStudio",
       },
       {
         slug: "gray",
@@ -77,7 +85,7 @@ function MainStudioModel() {
         position: SHIRT_POSITIONS[1],
         rotation: [0, Math.PI, 0],
         material: grayShirt,
-        hoverMat: grayStudio,
+        hoverMat: "grayStudio",
       },
       {
         slug: "sport",
@@ -85,7 +93,7 @@ function MainStudioModel() {
         position: SHIRT_POSITIONS[2],
         rotation: [0, Math.PI, 0],
         material: sportShirt,
-        hoverMat: redStudio,
+        hoverMat: "redStudio",
       },
     ],
     [nodes, materials],
@@ -161,7 +169,6 @@ function MainStudioModel() {
       return () => tlRefs.current.forEach((tl) => tl?.kill());
     },
     { dependencies: [] }, // Solo se ejecuta una vez tras el mount
-    [tlRefs.current, meshRefs.current],
   );
 
   // Mobile carousel — usando gsap.to directamente, más eficiente que iterar todos
@@ -177,35 +184,32 @@ function MainStudioModel() {
           gsap.to(mesh.rotation, { y: 0 });
           gsap.to(meshRefs.current[0]!.position, { z: 0 });
           gsap.to(meshRefs.current[1]!.position, { z: -0.45 });
-          setStudioMaterial(whiteStudio);
+          setStudioMaterial("whiteStudio");
           break;
         case 1:
           gsap.to(mesh.position, {
             x: shirts[i].position[0],
             z: shirts[i].position[2],
           }); // Volver a posición original
-          setStudioMaterial(redStudio);
+          setStudioMaterial("redStudio");
           break;
         case 2:
           gsap.to(mesh.position, { x: mesh.position.x + 0.65 });
           gsap.to(mesh.rotation, { y: 0 });
           gsap.to(meshRefs.current[2]!.position, { z: 0 });
           gsap.to(meshRefs.current[1]!.position, { z: -0.45 });
-          setStudioMaterial(grayStudio);
+          setStudioMaterial("grayStudio");
           break;
       }
     }
   }, [currentIndex]);
 
   // useCallback para evitar recrear handlers en cada render
-  const enterHandler = useCallback(
-    (idx: number, hoverMat: typeof defaultStudio) => {
-      document.body.style.cursor = "pointer";
-      setStudioMaterial(hoverMat);
-      tlRefs.current[idx]?.play();
-    },
-    [],
-  );
+  const enterHandler = useCallback((idx: number, hoverMat: StudioMaterial) => {
+    document.body.style.cursor = "pointer";
+    setStudioMaterial(hoverMat);
+    tlRefs.current[idx]?.play();
+  }, []);
 
   const leaveHandler = useCallback((idx: number) => {
     document.body.style.cursor = "auto";
@@ -223,7 +227,7 @@ function MainStudioModel() {
         castShadow
         receiveShadow
         geometry={nodes.Environment.geometry}
-        material={activeStudioMaterial}
+        material={studioMaterials[activeStudioMaterial]}
       />
 
       {shirts.map((shirt, idx) => (
@@ -236,7 +240,7 @@ function MainStudioModel() {
           position={shirt.position}
           rotation={shirt.rotation}
           material={shirt.material}
-          onPointerEnter={() => enterHandler(idx, shirt.hoverMat)}
+          onPointerEnter={() => enterHandler(idx, shirt["hoverMat"])}
           onPointerLeave={() => leaveHandler(idx)}
           onClick={() => handleClick(shirt.slug)}
         />
@@ -246,7 +250,7 @@ function MainStudioModel() {
         geometry={nodes.Hitbox.geometry}
         scale={[2.52, 1, 1]}
         visible={false}
-        onPointerLeave={() => setStudioMaterial(defaultStudio)}
+        onPointerLeave={() => setStudioMaterial("defaultStudio")}
       />
     </group>
   );
