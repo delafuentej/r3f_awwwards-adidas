@@ -3,11 +3,10 @@
 import { useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { View } from "@react-three/drei";
+import patchThreeLoadingManager from "../lib/patchThreeLoadingManager";
 import { useStore } from "../store/useStore";
 import Rig from "./Rig";
-import { LoadingSkeleton } from "./ui";
-import patchThreeLoadingManager from "../lib/patchThreeLoadingManager";
-import AssetsPreload from "./ui/AssetsPreload";
+import { AssetsPreload, LoadingSkeleton } from "./ui";
 
 // video 8-1 : 19:15https://www.youtube.com/watch?v=WRi6rMj1KI8
 

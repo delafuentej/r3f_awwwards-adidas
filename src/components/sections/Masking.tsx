@@ -1,9 +1,9 @@
 "use client";
 
+import { RefObject } from "react";
 import * as THREE from "three";
 import { Mask } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
-import { RefObject } from "react";
 
 const Masking = ({ ref }: { ref: RefObject<THREE.Mesh | null> }) => {
   const { width, height } = useThree((state) => state.viewport);

@@ -1,7 +1,6 @@
 "use client";
-
-import clsx from "clsx";
 import { useParams } from "next/navigation";
+import clsx from "clsx";
 
 const Footer = () => {
   const color = useParams()?.slug === "white" ? "text-black" : "text-white";

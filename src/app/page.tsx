@@ -1,9 +1,9 @@
 "use client";
 
 import { View } from "@react-three/drei";
-import MainStudioModel from "../components/MainStudioModel";
 import { useStore } from "../store/useStore";
 import { useResponsive } from "../store/useResponsive";
+import { MainStudioModel } from "../components";
 
 export default function Home() {
   const next = useStore((state) => state.next);

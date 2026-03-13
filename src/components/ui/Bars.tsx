@@ -1,7 +1,7 @@
+import { useRef } from "react";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
-import gsap from "gsap";
-import { useRef } from "react";
 
 const Bars = () => {
   const divRef = useRef<HTMLDivElement>(null);

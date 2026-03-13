@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
-import clsx from "clsx";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
+import { useGSAP } from "@gsap/react";
+import clsx from "clsx";
 import { useStore } from "@/src/store/useStore";
 
 const MusicStreamLine = ({ color }: { color: string }) => {

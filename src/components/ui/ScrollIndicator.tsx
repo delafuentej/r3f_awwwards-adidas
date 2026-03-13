@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
+import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
 import { useStore } from "@/src/store/useStore";
 import type { ShirtType } from "@/src/lib/textures";

@@ -10,11 +10,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useShirtSectionTextures } from "@/src/lib/useTextures";
 import { createMaterials } from "@/src/lib/material";
-import type { ShirtType } from "@/src/lib/textures";
-import type { TextureKey } from "@/src/lib/textures";
-import type { GLTF } from "three-stdlib";
 import { shirtTextColors } from "@/src/lib/colors";
 import { useResponsive } from "@/src/store/useResponsive";
+import type { ShirtType, TextureKey } from "@/src/lib/textures";
+import type { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & { nodes: { [name: string]: THREE.Mesh } };
 

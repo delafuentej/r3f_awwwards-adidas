@@ -2,20 +2,20 @@
 
 import { useCallback, useRef } from "react";
 import * as THREE from "three";
+import { ThreeEvent } from "@react-three/fiber";
 import { MeshReflectorMaterial, useMask, Text } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useShirtSectionTextures } from "@/src/lib/useTextures";
-import type { ShirtType, TextureKey } from "@/src/lib/textures";
-import type { GLTF } from "three-stdlib";
-import { shirtTextColors } from "@/src/lib/colors";
+import { useResponsive } from "@/src/store/useResponsive";
 import {
   useShirtEnvironmentCube,
   useShirtVideoTexture,
+  useShirtSectionTextures,
 } from "@/src/lib/useTextures";
-import { ThreeEvent } from "@react-three/fiber";
-import { useResponsive } from "@/src/store/useResponsive";
+import { shirtTextColors } from "@/src/lib/colors";
 import Masking from "./Masking";
+import type { ShirtType, TextureKey } from "@/src/lib/textures";
+import type { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & { nodes: { [name: string]: THREE.Mesh } };
 
