@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
-import ViewCanvas from "../components/ViewCanvas";
+import { ViewCanvas } from "../components";
+import { Header, Footer } from "../components";
+
 import { ResponsiveProvider } from "../providers/ResponsiveProvider";
-import { Header, Footer } from "../components/ui";
 
 import "./globals.css";
 

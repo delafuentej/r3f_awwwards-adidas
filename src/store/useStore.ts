@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import * as THREE from "three";
 
 export type StudioMaterial =
   | "defaultStudio"
@@ -12,6 +11,7 @@ interface StudioState {
   eventSource: HTMLElement | null;
   currentIndex: number;
   maxIndex: number;
+  minIndex: number;
   playMusic: boolean;
   scrolling: boolean;
   setStudioMaterial: (material: StudioMaterial) => void;
@@ -30,6 +30,7 @@ export const useStore = create<StudioState>((set, get) => ({
   eventSource: null as unknown as HTMLElement,
   currentIndex: 1,
   maxIndex: 2,
+  minIndex: 0,
   playMusic: false,
   scrolling: false,
 
@@ -47,7 +48,7 @@ export const useStore = create<StudioState>((set, get) => ({
 
   prev: () =>
     set((state) => ({
-      currentIndex: Math.max(state.currentIndex - 1, 0),
+      currentIndex: Math.max(state.currentIndex - 1, state.minIndex),
     })),
 
   toggleMusic: () =>

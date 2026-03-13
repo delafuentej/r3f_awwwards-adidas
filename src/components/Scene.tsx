@@ -1,12 +1,19 @@
+"use client";
+
 import { View } from "@react-three/drei";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import FirstWhiteModel from "./sections/FirstWhiteModel";
-import FirstGrayModel from "./sections/FirstGrayModel";
-import FirstSportModel from "./sections/FirstSportModel";
+
+import {
+  FirstWhiteModel,
+  FirstSportModel,
+  FirstGrayModel,
+  SecondModel,
+  ThirdModel,
+} from "./sections";
+
 import type { ShirtType } from "../lib/textures";
-import { SecondModel } from "./sections/SecondModel";
-import ThirdModel from "./sections/ThirdModel";
+
 type Props = {
   shirtType: ShirtType;
 };

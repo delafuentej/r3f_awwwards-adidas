@@ -38,7 +38,7 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
   const videoTexture = useShirtVideoTexture(shirtType);
 
   const getWallColor = () => shirtTextColors[shirtType].wall || 0x000000;
-  const getTextColor = () => shirtTextColors[shirtType].text || 0xffffff;
+  const getTextColor = () => shirtTextColors[shirtType].text;
 
   const handleButtonClick = useCallback((ev: ThreeEvent<MouseEvent>) => {
     ev.stopPropagation();
@@ -119,7 +119,13 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
             <planeGeometry args={[0.5, 0.2]} />
             <meshBasicMaterial
               map={icon}
-              color={getTextColor()}
+              color={
+                getTextColor() === 0x000000
+                  ? 0x000000
+                  : getTextColor() === 0xffffff
+                    ? 0xffffff
+                    : getTextColor()
+              }
               side={THREE.DoubleSide}
               transparent
               {...stencil}

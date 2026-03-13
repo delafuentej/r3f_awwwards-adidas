@@ -173,8 +173,6 @@ function MainStudioModel() {
 
   // Mobile carousel — usando gsap.to directamente, más eficiente que iterar todos
   useGSAP(() => {
-    if (window.innerWidth > 768) return;
-
     for (let i = 0; i < meshRefs.current.length; i++) {
       const mesh = meshRefs.current[i];
       if (!mesh) continue;

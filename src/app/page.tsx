@@ -9,14 +9,16 @@ export default function Home() {
   const next = useStore((state) => state.next);
   const prev = useStore((state) => state.prev);
 
+  const { isMobile, isTablet } = useResponsive();
+
   return (
     <>
       <View className="w-full h-dvh">
         <MainStudioModel />
       </View>
       <p className="home-title">SELECT A PRODUCT TO BEGIN</p>
-      <div className="left-arrow" onClick={prev} />
-      <div className="right-arrow" onClick={next} />
+      {(isMobile || isTablet) && <div className="left-arrow" onClick={prev} />}
+      {(isMobile || isTablet) && <div className="right-arrow" onClick={next} />}
     </>
   );
 }

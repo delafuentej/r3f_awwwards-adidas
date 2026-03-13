@@ -24,7 +24,7 @@ const ViewCanvas = () => {
   return (
     <Canvas
       style={{ position: "fixed", inset: 0, overflow: "hidden" }}
-      camera={{ position: [0, 2, 5], fov: 25 }}
+      camera={{ position: [0, 0.7, 3], fov: 30 }}
       eventSource={eventSource ?? undefined}
       eventPrefix="client"
       gl={{ stencil: true }}
@@ -33,8 +33,8 @@ const ViewCanvas = () => {
       <AssetsPreload />
       <Suspense fallback={<LoadingSkeleton />}>
         <View.Port />
-        <Rig />
       </Suspense>
+      <Rig />
     </Canvas>
   );
 };

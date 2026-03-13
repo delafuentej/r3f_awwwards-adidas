@@ -1,3 +1,5 @@
+"use client";
+
 import * as THREE from "three";
 import { Mask } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
