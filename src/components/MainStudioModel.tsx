@@ -44,6 +44,16 @@ const SHIRT_POSITIONS: [number, number, number][] = [
 const MOBILE_OFFSET = 0.65;
 
 function MainStudioModel() {
+  const activeStudioMaterial = useStore((state) => state.activeStudioMaterial);
+  const setStudioMaterial = useStore((state) => state.setStudioMaterial);
+  const currentIndex = useStore((state) => state.currentIndex);
+  const scale = useResponsive((state) => state.scale);
+  console.log("Scale from store:", scale);
+  const groupRef = useRef<THREE.Group>(null);
+  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
+  const tlRefs = useRef<(GSAPTimeline | null)[]>([]);
+  const router = useRouter();
+
   const { nodes } = useGLTF(
     "/models/main/MainStudio.glb",
   ) as unknown as GLTFResult;
@@ -76,7 +86,7 @@ function MainStudioModel() {
         slug: "white",
         geometry: nodes.Shirt_White.geometry,
         position: SHIRT_POSITIONS[0],
-        rotation: [0, Math.PI, 0],
+        rotation: [0, Math.PI / 9, 0],
         material: whiteShirt,
         hoverMat: "whiteStudio",
       },
@@ -84,7 +94,7 @@ function MainStudioModel() {
         slug: "gray",
         geometry: nodes.Shirt_Sport.geometry,
         position: SHIRT_POSITIONS[1],
-        rotation: [0, Math.PI, 0],
+        rotation: [0, Math.PI / 9, 0],
         material: grayShirt,
         hoverMat: "grayStudio",
       },
@@ -99,19 +109,6 @@ function MainStudioModel() {
     ],
     [nodes, materials],
   );
-
-  const activeStudioMaterial = useStore((state) => state.activeStudioMaterial);
-  const setStudioMaterial = useStore((state) => state.setStudioMaterial);
-  const currentIndex = useStore((state) => state.currentIndex);
-
-  const scale = useResponsive((state) => state.scale);
-  console.log("Scale from store:", scale);
-
-  const groupRef = useRef<THREE.Group>(null);
-  const meshRefs = useRef<(THREE.Mesh | null)[]>([]);
-  const tlRefs = useRef<(GSAPTimeline | null)[]>([]);
-
-  const router = useRouter();
 
   // Prefetch en mount — sin deps innecesarias
   useEffect(() => {

@@ -22,7 +22,7 @@ const useAnimation = (
     });
     tl.to(groupRef.current.position, { y: 1.5 })
       .to(shirtRef.current.rotation, { y: Math.PI / 2 }, 0)
-      //.to(maskRef.current.position, { y: 5 }, 0)
+      .to(maskRef.current.position, { y: 5 }, 0)
       .to(maskRef.current.rotation, { z: -0.2 }, 0);
   }, []);
 };

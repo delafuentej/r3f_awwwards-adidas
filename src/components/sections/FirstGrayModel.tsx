@@ -34,24 +34,6 @@ function FirstGrayModel() {
   >;
 
   useAnimation(groupRef, shirtRef, maskRef);
-  // useGSAP(() => {
-  // if (!shirtRef.current || !groupRef.current || !maskRef.current) return;
-  // const tl = gsap.timeline({
-  // scrollTrigger: {
-  // trigger: "#first-section",
-  // start: "top top",
-  // end: "bottom top",
-  // scrub: 1,
-  // pin: true,
-  // markers: true,
-  // },
-  // });
-  // tl.to(groupRef.current.position, { y: 1.5, duration: 2 })
-  // .to(shirtRef.current.rotation, { y: Math.PI / 2 }, 0)
-  // .to(maskRef.current.position, { y: 5 }, 0)
-  // .to(maskRef.current.rotation, { z: -0.2 }, 0);
-  // }, []);
-  // console.log("materials gray first", materials);
   return (
     <group>
       <Masking ref={maskRef} />

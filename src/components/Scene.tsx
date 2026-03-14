@@ -23,21 +23,21 @@ gsap.registerPlugin(ScrollTrigger);
 const Scene = ({ shirtType }: Props) => {
   return (
     <main className="scene">
-      <section id="first-section" className="h-screen">
+      <section id="first-section" className="">
         <View className="w-dvw h-dvh">
           {shirtType === "white" && <FirstWhiteModel />}
           {shirtType === "gray" && <FirstGrayModel />}
           {shirtType === "sport" && <FirstSportModel />}
         </View>
       </section>
-      <section id="second-section" className="h-screen">
-        <View className="w-dvw h-dvh">
-          <SecondModel shirtType={shirtType} />
-        </View>
-      </section>
       <section id="third-section" className="third-section">
         <View className="w-dvw h-dvh">
           <ThirdModel shirtType={shirtType} />
+        </View>
+      </section>
+      <section id="second-section" className="second-section">
+        <View className="w-dvw h-dvh">
+          <SecondModel shirtType={shirtType} />
         </View>
       </section>
     </main>

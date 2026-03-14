@@ -124,7 +124,7 @@ function SecondModel({ shirtType }: { shirtType: ShirtType }) {
       scrollTrigger: {
         trigger: "#second-section",
         start: "top top",
-        end: "bottom top",
+        end: "600% top",
         toggleActions: "restart reverse restart reverse",
         scrub: 1,
         pin: true,

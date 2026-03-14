@@ -43,7 +43,7 @@ function FirstSportModel() {
           geometry={nodes.Shirt_Sport.geometry}
           material={materials.shirt}
           position={[0, 0.7, 0]}
-          rotation={[Math.PI, 0, Math.PI]}
+          //   rotation={[Math.PI, 0, Math.PI]}
         />
         <mesh geometry={nodes.Environment.geometry} material={materials.env} />
         <mesh geometry={nodes.Ramp.geometry} material={materials.ramp} />
