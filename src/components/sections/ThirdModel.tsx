@@ -25,7 +25,7 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
     THREE.Texture
   >;
 
-  const { isMobile } = useResponsive();
+  const { isMobile, isTablet } = useResponsive();
 
   const icon = textures.icon;
   icon.flipY = true;
@@ -69,9 +69,11 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
       <group ref={groupRef}>
         {/* TV */}
         <mesh
-          scale={isMobile ? 0.06 : 0.1}
+          scale={isMobile ? 0.06 : isTablet ? 0.08 : 0.1}
           rotation={[0, -Math.PI / 8, 0]}
-          position={isMobile ? [0, 0.45, 0] : [0.2, 0.65, 0]}
+          position={
+            isMobile ? [0, 0.35, 0] : isTablet ? [0, 0.45, 0] : [0.2, 0.65, 0]
+          }
         >
           <planeGeometry args={[16, 9]} />
           <meshBasicMaterial map={videoTexture} {...stencil} />
@@ -108,7 +110,9 @@ function ThirdModel({ shirtType }: { shirtType: ShirtType }) {
 
         {/* LG */}
         <group
-          position={isMobile ? [0, 0.9, 0] : [-0.8, 0.9, 0]}
+          position={
+            isMobile ? [0, 0.9, 0] : isTablet ? [0, 1, 0] : [-0.8, 0.9, 0]
+          }
           rotation={isMobile ? [0, -Math.PI / 9, 0] : [0, Math.PI / 9, 0]}
         >
           <mesh

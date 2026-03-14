@@ -26,7 +26,7 @@ function SecondModel({ shirtType }: { shirtType: ShirtType }) {
 
   const { isMobile } = useResponsive();
 
-  console.log("nodes:", nodes);
+  // console.log("nodes:", nodes);
 
   const textures = useShirtSectionTextures(shirtType, "second");
   if (!textures) return;
