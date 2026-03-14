@@ -26,10 +26,13 @@ Example deployment: https://r3f-awwwards-adidas.vercel.app/
 # Preview
 
 <p align="center" width="100%">
-<img src="public/images/app/aw_ad1.png" width="23%" />
-<img src="public/images/app/aw_ad2.png" width="23%" />
-<img src="public/images/app/aw_ad3.png" width="23%" />
-<img src="public/images/app/aw_ad4.png" width="23%" />
+<img src="public/images/app/aw_ad1.png" width="100%" />
+
+</p>
+<p align="center" width="100%">
+<img src="public/images/app/aw_ad2.png" width="30%" />
+<img src="public/images/app/aw_ad3.png" width="30%" />
+<img src="public/images/app/aw_ad4.png" width="30%" />
 
 </p>
 
