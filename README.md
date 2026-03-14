@@ -6,7 +6,6 @@
 ![React Three Fiber](https://img.shields.io/badge/R3F-3D_Rendering-purple)
 ![GSAP](https://img.shields.io/badge/GSAP-Animations-green)
 ![Tailwind](https://img.shields.io/badge/TailwindCSS-UI-cyan)
-![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
 An immersive **3D WebGL product showcase** inspired by modern Adidas-style product experiences.
 
@@ -27,10 +26,10 @@ Example deployment: https://r3f-awwwards-adidas.vercel.app/
 # Preview
 
 <p align="center" width="100%">
-<img src="public/images/app/aw_ad1.png" width="24%" />
-<img src="public/images/app/aw_ad2.png" width="24%" />
-<img src="public/images/app/aw_ad3.png" width="24%" />
-<img src="public/images/app/aw_ad4.png" width="24%" />
+<img src="public/images/app/aw_ad1.png" width="23%" />
+<img src="public/images/app/aw_ad2.png" width="23%" />
+<img src="public/images/app/aw_ad3.png" width="23%" />
+<img src="public/images/app/aw_ad4.png" width="23%" />
 
 </p>
 
@@ -98,19 +97,29 @@ Recommended preview sections:
 
 The project uses a **single WebGL canvas architecture** to improve performance and avoid multiple GPU contexts.
 
-Application
-│
-├─ UI Layer (React + Tailwind)
-│
-├─ Animation Layer
-│ GSAP + ScrollTrigger
-│
-├─ State Layer
-│ Zustand
-│
-└─ Rendering Layer
-React Three Fiber
-└─ Three.js
+## Application Architecture
+
+```mermaid
+graph TD
+
+A[Application]
+
+A --> B[UI Layer]
+B --> B1[React]
+B --> B2[Tailwind]
+
+A --> C[Animation Layer]
+C --> C1[GSAP]
+C --> C2[ScrollTrigger]
+
+A --> D[State Layer]
+D --> D1[Zustand]
+
+A --> E[Rendering Layer]
+E --> E1[React Three Fiber]
+E1 --> E2[Three.js]
+
+```
 
 This separation allows UI logic, animation, and rendering to remain independent.
 
@@ -119,17 +128,22 @@ This separation allows UI logic, animation, and rendering to remain independent.
 # WebGL Rendering Structure
 
 The entire application uses **one shared canvas**.
-Canvas
-│
-└── View.Port
-│
-├── Home Scene
-│
-└── Product Scene
-│
-├── First Section
-├── Second Section
-└── Third Section
+
+```mermaid
+flowchart TB
+
+Canvas[WebGL Canvas]
+
+Canvas --> ViewPort[View.Port]
+
+ViewPort --> HomeScene[Home Scene]
+ViewPort --> ProductScene[Product Scene]
+
+ProductScene --> Section1[First Section]
+ProductScene --> Section2[Second Section]
+ProductScene --> Section3[Third Section]
+
+```
 
 This prevents expensive WebGL context creation and improves performance.
 
@@ -206,49 +220,6 @@ Using one canvas avoids multiple GPU contexts.
 ### React Suspense
 
 Suspense handles asynchronous asset loading.
-
----
-
-# Project Structure:
-
-src
-│
-├── app
-│ ├── page.tsx
-│ └── shirts
-│ └── [slug]
-│
-├── components
-│ ├── sections
-│ │ ├── FirstWhiteModel
-│ │ ├── FirstGrayModel
-│ │ ├── FirstSportModel
-│ │ ├── SecondModel
-│ │ └── ThirdModel
-│ │
-│ ├── ui
-│ │ ├── Header
-│ │ ├── Footer
-│ │ ├── ScrollIndicator
-│ │ ├── MusicStreamLine
-│ │ └── AssetsPreload
-│ │
-│ ├── Scene
-│ ├── Rig
-│ └── ViewCanvas
-│
-├── store
-│ ├── useStore
-│ └── useResponsive
-│
-├── providers
-│ └── ResponsiveProvider
-│
-├── lib
-│ ├── textures
-│ ├── materials
-│ ├── animations
-│ └── handlers
 
 ---
 
